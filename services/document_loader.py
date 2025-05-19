@@ -1,4 +1,4 @@
-from langchain.document_loaders import TextLoader, UnstructuredPDFLoader
+from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
 from pathlib import Path
 from typing import List
 from langchain.schema import Document

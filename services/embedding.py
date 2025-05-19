@@ -1,4 +1,4 @@
-from langchain.embeddings import OllamaEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from typing import List
 
 class EmbeddingService:
