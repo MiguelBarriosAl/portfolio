@@ -1,9 +1,10 @@
+from uuid import uuid4
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance, PointStruct
-from uuid import uuid4
-from services.embedding import EmbeddingService
+from qdrant_client.models import Distance, PointStruct, VectorParams
+
 from config import settings
+from services.embedding import EmbeddingService
 
 
 class QdrantVectorStore:
@@ -16,7 +17,9 @@ class QdrantVectorStore:
         if not self.client.collection_exists(self.collection_name):
             self.client.recreate_collection(
                 collection_name=self.collection_name,
-                vectors_config=VectorParams(size=768, distance=Distance.COSINE)  # 768 para nomic
+                vectors_config=VectorParams(
+                    size=768, distance=Distance.COSINE
+                ),  # 768 para nomic
             )
 
     def index_documents(self, texts: list[str], metadatas: list[dict] = None):
