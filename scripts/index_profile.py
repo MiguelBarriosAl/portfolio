@@ -40,7 +40,7 @@ def main():
     store = QdrantVectorStore()
     store.index_documents(texts, metadatas)
 
-    print(f"✅ {len(texts)} chunks indexados correctamente desde {file_path}")
+    print(f"{len(texts)} chunks indexados correctamente desde {file_path}")
 
 
 if __name__ == "__main__":
