@@ -25,6 +25,8 @@ opencv-python = "^4.11.0.86"
 pytesseract = "^0.3.13"
 pypdf = "^5.5.0"
 pikepdf = "^9.7.0"
+streamlit = "^1.45.1"
+requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.0"
