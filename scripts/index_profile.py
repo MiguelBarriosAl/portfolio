@@ -23,7 +23,7 @@ def main():
     file_path = Path(args.file)
 
     if not file_path.exists():
-        raise FileNotFoundError(f"❌ Archivo no encontrado: {file_path}")
+        raise FileNotFoundError(f"Archivo no encontrado: {file_path}")
 
     # 1. Cargar documento
     documents = load_documents(str(file_path))
