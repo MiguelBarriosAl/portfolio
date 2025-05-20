@@ -1,8 +1,17 @@
 from pathlib import Path
 from typing import List
 
+import nltk
 from langchain.schema import Document
 from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
+
+for resource in ["punkt", "averaged_perceptron_tagger"]:
+    try:
+        nltk.data.find(
+            f"tokenizers/{resource}" if resource == "punkt" else f"taggers/{resource}"
+        )
+    except LookupError:
+        nltk.download(resource)
 
 
 def load_documents(path: str) -> List[Document]:
