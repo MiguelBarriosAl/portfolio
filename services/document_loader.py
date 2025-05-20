@@ -1,7 +1,9 @@
-from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
 from pathlib import Path
 from typing import List
+
 from langchain.schema import Document
+from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
+
 
 def load_documents(path: str) -> List[Document]:
     file_path = Path(path)

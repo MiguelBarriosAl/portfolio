@@ -1,5 +1,7 @@
-from langchain_community.embeddings import OllamaEmbeddings
 from typing import List
+
+from langchain_community.embeddings import OllamaEmbeddings
+
 
 class EmbeddingService:
     def __init__(self, model: str = "nomic-embed-text"):

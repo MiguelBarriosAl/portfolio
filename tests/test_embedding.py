@@ -1,5 +1,6 @@
 from services.embedding import EmbeddingService
 
+
 def test_embed_query_returns_vector():
     service = EmbeddingService()
     query = "What is your experience with Python?"

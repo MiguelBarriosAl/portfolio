@@ -1,21 +1,11 @@
-<<<<<<< HEAD
-=======
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,venv,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,venv,python
-
-### Python ###
->>>>>>> feat/logic-rag-base
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
+
 # C extensions
 *.so
-<<<<<<< HEAD
-data/*
-.env*
-=======
 
 # Distribution / packaging
 .Python
@@ -225,7 +215,6 @@ __pycache__/
 # C extensions
 *.so
 
->>>>>>> feat/logic-rag-base
 # Distribution / packaging
 .Python
 build/
@@ -398,11 +387,10 @@ cython_debug/
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
-<<<<<<< HEAD
-.cursorindexingignore
-=======
 .cursorindexingignore
 
 /services/__pycache__/*
-/tests/__pycache__/*
->>>>>>> feat/logic-rag-base
+*/__pycache__/*
+__pycache__/
+*/__pycache__/
+/tests/__pycache__/**
