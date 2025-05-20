@@ -33,3 +33,13 @@ class QdrantVectorStore:
         ]
 
         self.client.upsert(collection_name=self.collection_name, points=points)
+
+
+_vectorstore = None
+
+
+def get_vectorstore() -> QdrantVectorStore:
+    global _vectorstore
+    if _vectorstore is None:
+        _vectorstore = QdrantVectorStore()
+    return _vectorstore
