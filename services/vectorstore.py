@@ -8,8 +8,8 @@ from services.embedding import EmbeddingService
 
 
 class QdrantVectorStore:
-    def __init__(self, collection_name: str = settings.COLLECTION_NAME):
-        self.client = QdrantClient(url=settings.QDRANT_URL)
+    def __init__(self, collection_name: str = settings.collection_name):
+        self.client = QdrantClient(url=settings.qdrant_url)
         self.embedding_service = EmbeddingService()
         self.collection_name = collection_name
 
