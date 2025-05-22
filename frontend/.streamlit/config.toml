@@ -1,0 +1,9 @@
+[server]
+headless = true
+enableCORS = false
+
+[runner]
+magicEnabled = true
+
+[theme]
+base = "light"

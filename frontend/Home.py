@@ -1,8 +1,11 @@
+import sys
 from pathlib import Path
 
 import streamlit as st
+from utils import ask_question
 
-from frontend.utils import ask_question  # Asegúrate de que funcione correctamente
+sys.path.append(str(Path(__file__).resolve().parent))
+
 
 st.set_page_config(
     page_title="Miguel Barrios – AI Portfolio", page_icon="🤖", layout="wide"
