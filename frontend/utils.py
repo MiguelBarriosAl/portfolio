@@ -1,6 +1,6 @@
 import requests
 
-from .config import API_URL
+from config import API_URL
 
 
 def ask_question(query: str) -> str:
