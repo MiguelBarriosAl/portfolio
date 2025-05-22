@@ -17,9 +17,7 @@ class QdrantVectorStore:
         if not self.client.collection_exists(self.collection_name):
             self.client.recreate_collection(
                 collection_name=self.collection_name,
-                vectors_config=VectorParams(
-                    size=768, distance=Distance.COSINE
-                ),  # 768 para nomic
+                vectors_config=VectorParams(size=768, distance=Distance.COSINE),
             )
 
     def index_documents(self, texts: list[str], metadatas: list[dict] = None):
