@@ -1,13 +1,12 @@
 app = "ai-portfolio-backend"
 
 [build]
-  builder = "Dockerfile"
+dockerfile = "Dockerfile"
 
 [env]
-  QDRANT_URL = "http://qdrant:6333"
+  QDRANT_URL = "https://qdrant-vector-db.fly.dev"
   COLLECTION_NAME = "portfolio"
   MODEL_NAME = "nomic-embed-text"
-  UPLOAD_API_KEY = "tu_clave_aqui"
 
 [[services]]
   internal_port = 8000
@@ -16,6 +15,13 @@ app = "ai-portfolio-backend"
   [[services.ports]]
     handlers = ["http"]
     port = 80
+
   [[services.ports]]
     handlers = ["tls", "http"]
     port = 443
+
+[deploy]
+  strategy = "immediate"
+
+[experimental]
+  auto_rollback = true

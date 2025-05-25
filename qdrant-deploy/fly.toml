@@ -1,0 +1,16 @@
+app = "qdrant-vector-db"
+
+[build]
+image = "qdrant/qdrant:latest"
+
+[[services]]
+internal_port = 6333
+protocol = "tcp"
+
+  [[services.ports]]
+  port = 80
+  handlers = ["http"]
+
+  [[services.ports]]
+  port = 443
+  handlers = ["tls", "http"]
