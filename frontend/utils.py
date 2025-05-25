@@ -6,12 +6,12 @@ from config import API_URL
 def ask_question(query: str) -> str:
     try:
         res = requests.post(f"{API_URL}/ask", json={"query": query})
-        res.raise_for_status()  # lanza excepción si status != 200
+        res.raise_for_status()
         return res.json().get("response", "No response found.")
     except requests.RequestException as e:
-        return f"❌ Request failed: {e}"
+        return f"Request failed: {e}"
     except ValueError:
-        return f"❌ Invalid JSON response: {res.text}"
+        return f"Invalid JSON response: {res.text}"
 
 
 def upload_file(file) -> bool:
