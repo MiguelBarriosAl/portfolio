@@ -4,8 +4,14 @@ from config import API_URL
 
 
 def ask_question(query: str) -> str:
-    res = requests.post(f"{API_URL}/ask", json={"query": query})
-    return res.json()["response"]
+    try:
+        res = requests.post(f"{API_URL}/ask", json={"query": query})
+        res.raise_for_status()  # lanza excepción si status != 200
+        return res.json().get("response", "No response found.")
+    except requests.RequestException as e:
+        return f"❌ Request failed: {e}"
+    except ValueError:
+        return f"❌ Invalid JSON response: {res.text}"
 
 
 def upload_file(file) -> bool:
