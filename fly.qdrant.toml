@@ -1,0 +1,11 @@
+app = "qdrant-vector-db"
+
+[build]
+  image = "qdrant/qdrant"
+
+[[services]]
+  internal_port = 6333
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 6333
