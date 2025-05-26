@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     collection_name: str = "portfolio"
     model_name: str = "nomic-embed-text"
     upload_api_key: str
+    openai_api_key: str
 
     class Config:
         env_file = ".env"

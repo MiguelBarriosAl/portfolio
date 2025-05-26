@@ -1,17 +1,9 @@
 from pathlib import Path
 from typing import List
 
-import nltk
-from langchain.schema import Document
 from langchain_community.document_loaders import TextLoader, UnstructuredPDFLoader
-
-for resource in ["punkt", "averaged_perceptron_tagger"]:
-    try:
-        nltk.data.find(
-            f"tokenizers/{resource}" if resource == "punkt" else f"taggers/{resource}"
-        )
-    except LookupError:
-        nltk.download(resource)
+from langchain_core.documents import Document
+from pdfminer.high_level import extract_text
 
 
 def load_documents(path: str) -> List[Document]:
@@ -28,3 +20,15 @@ def load_documents(path: str) -> List[Document]:
         raise ValueError("Unsupported file type")
 
     return loader.load()
+
+
+def load_pdf_or_txt(file_path: str) -> list[Document]:
+    path = Path(file_path)
+    if path.suffix == ".pdf":
+        text = extract_text(file_path)
+    elif path.suffix == ".txt":
+        text = path.read_text(encoding="utf-8")
+    else:
+        raise ValueError("Unsupported file type")
+
+    return [Document(page_content=text, metadata={"source": str(path.name)})]
