@@ -16,7 +16,6 @@ class QdrantVectorStore:
         self.embedding_service = EmbeddingService()
         self.collection_name = collection_name
 
-        # Crear la colección si no existe
         if not self.client.collection_exists(self.collection_name):
             self.client.recreate_collection(
                 collection_name=self.collection_name,

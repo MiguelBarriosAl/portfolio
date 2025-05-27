@@ -5,7 +5,7 @@ from fastapi import APIRouter, File, Header, HTTPException, UploadFile, status
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores.qdrant import Qdrant
-from langchain_community.llms import Ollama
+from langchain_openai import ChatOpenAI
 
 from config import settings
 from prompts.ask_profile_prompt import ASK_PROFILE_PROMPT
@@ -26,7 +26,12 @@ def ask_profile(input: AskRequest):
         embeddings=vectorstore.embedding_service.client,
     ).as_retriever(search_kwargs={"k": 3})
 
-    llm = Ollama(model="mistral")
+    llm = ChatOpenAI(
+        model=settings.openai_llm_model,
+        temperature=0.0,
+        max_tokens=settings.max_tokens,
+        request_timeout=settings.request_timeout,
+    )
 
     qa = RetrievalQA.from_chain_type(
         llm=llm,
