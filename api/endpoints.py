@@ -58,6 +58,7 @@ async def upload_file(file: UploadFile = File(...), x_api_key: str = Header(None
         )
 
     save_path = Path(f"data/dev/{file.filename}")
+    save_path.parent.mkdir(parents=True, exist_ok=True)
     with save_path.open("wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 

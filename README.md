@@ -61,3 +61,7 @@ It leverages:
 ✅ Running tests
 
     poetry run pytest
+
+docker run --env-file .env -p 8000:8000   -v $(pwd)/data:/app/data   ai-portfolio-backend
+poetry run streamlit run frontend/Home.py
+docker run -d --name qdrant -p 6333:6333 qdrant/qdrant
