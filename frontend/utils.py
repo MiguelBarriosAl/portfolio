@@ -12,9 +12,3 @@ def ask_question(query: str) -> str:
         return f"Request failed: {e}"
     except ValueError:
         return f"Invalid JSON response: {res.text}"
-
-
-def upload_file(file) -> bool:
-    files = {"file": (file.name, file.getvalue())}
-    res = requests.post(f"{API_BASE_URL}/upload-file", files=files)
-    return res.status_code == 200
