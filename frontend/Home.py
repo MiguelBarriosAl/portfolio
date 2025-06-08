@@ -116,9 +116,23 @@ st.markdown(
 )
 
 # Secciones con pestañas
-tabs = st.tabs(["🧠 About Me", "📁 Projects", "🤖 AI Assistant", "📄 CV"])
+tabs = st.tabs(["🤖 AI Assistant", "🧠 About Me", "📁 Projects", "📄 CV"])
 
 with tabs[0]:
+    st.header("Ask the AI Assistant")
+    question = st.text_input(
+        "Ask me something about my experience, skills, or projects:"
+    )
+    if st.button("Ask"):
+        if question:
+            from utils import ask_question
+
+            response = ask_question(question)
+            st.success(f"🤖 {response}")
+        else:
+            st.warning("Please enter a question to ask the assistant.")
+
+with tabs[1]:
     st.header("🚀 About Me")
     st.markdown(
         """
@@ -150,7 +164,7 @@ I combine technical depth with business-driven thinking to build solutions that 
         )
 
 
-with tabs[1]:
+with tabs[2]:
     st.header("📁 Key Projects")
 
     st.markdown("### 🔹 MLOps Platform for Fraud Detection *(INTELYGENZ)*")
@@ -177,20 +191,6 @@ with tabs[1]:
     """
     )
 
-
-with tabs[2]:
-    st.header("Ask the AI Assistant")
-    question = st.text_input(
-        "Ask me something about my experience, skills, or projects:"
-    )
-    if st.button("Ask"):
-        if question:
-            from utils import ask_question
-
-            response = ask_question(question)
-            st.success(f"🤖 {response}")
-        else:
-            st.warning("Please enter a question to ask the assistant.")
 
 with tabs[3]:
     st.header("Download CV")
