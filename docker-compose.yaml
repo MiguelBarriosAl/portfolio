@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-portfolio-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - qdrant
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: ai-portfolio-frontend
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    command: poetry run streamlit run frontend/Home.py
+
+volumes:
+  qdrant_data:
